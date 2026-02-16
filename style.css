@@ -1,0 +1,459 @@
+@import url("https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  position: relative;
+  padding-top: 80px;
+}
+
+/* Global CSS */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 60px;
+}
+h3 {
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  font-weight: 500;
+}
+
+.sec-space {
+  padding: 4rem 0;
+}
+.extra-space
+  {
+    padding-top: 8rem;
+  }
+.obj-width {
+    max-width: 1200px;
+    margin: auto;
+  }
+#w-btn{
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #fff;
+  color: #1f4a40;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: none;
+  border: none;
+}
+#g-btn{
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #07eea9;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: none;
+  border: none;
+}
+.sec-space {
+  padding: 4rem 0;
+}
+.extra-space {
+  padding-top: 8rem;
+}
+.obj-width {
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: #07eea9;;
+  z-index:999;
+}
+#menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+}
+#navbar .logo {
+  width: 120px;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+#menu li {
+  margin: 0 1rem;
+}
+#menu li a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-left: 40px;
+  font-size: 1.1rem; 
+  font-weight: 500; 
+}
+
+#bar{
+  color:black;
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/*hero*/
+.hero {
+  background-color: #07eea9;
+}
+
+.hero-box {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  align-items: center;
+}
+.h-left {
+  width: 45%;
+  color: #ffffff;
+}
+.h-left p {
+  padding: 1.3rem 0;
+}
+
+.search-bar {
+  display: flex;
+  position: relative;
+}
+
+.search-bar input{
+  width: 100%;
+  height: 4rem;
+  border-radius: 35px;
+  padding: 0 20px;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+}
+
+.search-bar a {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #07eea9;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+
+.h-right{
+  width: 50%;
+}
+
+.h-right img {
+  width:100%;
+  object-fit: cover;
+}
+
+.features .fe-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.features .fe-box div{
+  width: 200px;
+}
+.features .fe-box img{
+  width: 50%;
+  margin-top: 3em;
+}
+
+.jobs .job-id {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.1);
+}
+.jobs .job-id li {
+  padding: 20px;
+  cursor: pointer;
+  color: black;
+}
+.jobs .job-id li.active {
+  background-color: #07eea9;
+  color: white;
+}
+
+
+.jobs .jList{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  justify-items: start;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: black;
+  padding: 2rem 2rem;
+
+}
+
+.jobs .jList.delete{
+  display: none;
+}
+
+.jobs .jList:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+.jobs .jList img{
+  width: 40px;
+  object-fit: cover;
+}
+.jobs .jList h3{
+  padding-bottom:  0;
+}
+
+.trust .t-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 3rem;
+}
+
+.trust .t-box img {
+  margin: 1rem 1rem 1rem 0;
+  
+}
+.team-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.team-container .fl-box{
+ border: 1px solid #ccc;
+ width: 280px;
+ padding: 2rem 0;
+ border-radius: 20px;
+ margin-top: 3rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+
+.fl-box img{
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.skill {
+  padding-bottom: 3rem;
+}
+
+#key{
+  font-size: 0.8rem;
+  background-color: aquamarine;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+footer {
+  background-color: #07eea9;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.top {    
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+padding: 1rem 0;
+text-align: center;
+}
+
+.top .logo {
+ width: 160px;
+ margin-bottom: 1rem;
+}
+.top i {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.bottom {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 2rem;
+  text-align: start;
+}
+.bottom div{
+  display: flex;
+  flex-direction: column;
+}
+.bottom a {
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  line-height: 35px;
+  font-size: 1.1rem;
+}
+
+
+
+
+@media (max-width: 699px) {
+  #menu {
+    display: block;
+    background-color: #07eea9;
+    height: auto;
+    position: absolute;
+    top: 80px;
+    right: -100%;
+    width: 280px;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 13px;
+    margin-top: 10px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  #menu.active {
+    right: 10px;
+    opacity: 1;
+    transition: right 0.3s ease, opacity 0.3s ease;
+  }
+  #menu li {
+    margin: 10px 0;
+  }
+
+  menu li a {
+    color: #fff;
+  }
+  #bar {
+    display: block;
+    font-size: 1.7rem;
+    cursor: pointer;
+  }
+  #w-btn {
+    margin: 20px 0 0 50px;
+    background: #fff;
+    color: #1f4a40;
+  }
+}
+
+@media (max-width: 699px) {
+  .hero-box {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    align-items: center;
+    padding: 8rem 0;
+  }
+  .h-left {
+    width: 100%;
+  }
+  .h-right {
+   display: none;
+  }
+  .h-right {
+    margin-top: 20px;
+  }
+
+  .features .fe-box {
+    width: 40%;
+  }
+
+  .jobs .job-id {
+  position: relative;
+  width: 100%;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .jobs .job-id li {
+  padding: 20px 30px;
+  white-space: nowrap;
+  }
+
+  .jobs .jList{
+  width: 48%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 15px;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  color: black;
+  padding: 2rem 1rem;
+  } 
+
+  .jobs-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+
+  .team-container .fl-box{
+ border: 1px solid #ccc;
+ width: 48%;;
+ border-radius: 20px;
+ margin-top: 1rem;
+ display: flex;
+ text-align: center;
+  }
+
+  .skill{
+    padding-bottom: 1rem;
+  }
+}
