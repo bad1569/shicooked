@@ -1,11 +1,24 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useJobs } from '../context/JobsContext';
+import { useAuth } from '../context/AuthContext';
+import { trackViewedJob } from '../services/userJobTrackingService';
 
 const JobDetailsPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { getJobById } = useJobs();
+  const { currentUser } = useAuth();
   const job = getJobById(id);
+
+  // Track viewed job
+  useEffect(() => {
+    if (currentUser && job) {
+      trackViewedJob(currentUser.uid, id, job).catch(err => {
+        console.error('Error tracking viewed job:', err);
+      });
+    }
+  }, [id, currentUser, job]);
 
   if (!job) {
     return (
@@ -14,6 +27,12 @@ const JobDetailsPage = () => {
       </div>
     );
   }
+
+  const handleApplyClick = (e) => {
+    e.preventDefault();
+    // Navigate to the job application page
+    navigate(`/apply/${id}`);
+  };
 
   return (
     <div className="extra-space obj-width">
@@ -25,9 +44,13 @@ const JobDetailsPage = () => {
             <span>{job.type}</span>
           </div>
         </div>
-        <a id="g-btn" href="/" onClick={(e) => e.preventDefault()}>
+        <button 
+          id="g-btn" 
+          onClick={handleApplyClick}
+          style={{ border: 'none', cursor: 'pointer' }}
+        >
           Apply Now
-        </a>
+        </button>
       </div>
 
       <section className="job-details-info">
@@ -75,12 +98,39 @@ const JobDetailsPage = () => {
 
         <h3 style={{ marginTop: '2rem' }}>Salary Range</h3>
         <p>{job.rate || 'N/A'}</p>
+
+        {job.skills && job.skills.length > 0 && (
+          <>
+            <h3 style={{ marginTop: '2rem' }}>Required Skills</h3>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {job.skills.map((skill, idx) => (
+                <span 
+                  key={idx}
+                  style={{
+                    background: '#e8f1ff',
+                    color: '#007bff',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '20px',
+                    fontSize: '0.9rem',
+                    fontWeight: '500'
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </>
+        )}
       </section>
 
       <div style={{ textAlign: 'center', margin: '3rem 0' }}>
-        <a id="g-btn" href="/" onClick={(e) => e.preventDefault()} style={{ display: 'inline-block' }}>
+        <button 
+          id="g-btn" 
+          onClick={handleApplyClick}
+          style={{ border: 'none', cursor: 'pointer', display: 'inline-block' }}
+        >
           Apply Now
-        </a>
+        </button>
       </div>
     </div>
   );

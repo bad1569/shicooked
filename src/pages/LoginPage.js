@@ -1,63 +1,83 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { validateLoginForm } from '../utils/validation';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
-    remember: false
+    password: ''
   });
 
   const [error, setError] = useState('');
-  const { login, getSavedEmail, isSaveEmailChecked } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const savedEmail = getSavedEmail();
-    const rememberMe = isSaveEmailChecked();
-
-    if (rememberMe && savedEmail) {
-      setFormData((prevState) => ({
-        ...prevState,
-        email: savedEmail,
-        remember: true
-      }));
-    }
-  }, [getSavedEmail, isSaveEmailChecked]);
+  const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
 
   const handleChange = (e) => {
-    const { id, type, value, checked } = e.target;
+    const { id, value } = e.target;
     setFormData({
       ...formData,
-      [id]: type === 'checkbox' ? checked : value
+      [id]: value
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    const validation = validateLoginForm(formData.email, formData.password);
+    // Validation
+    if (!formData.email || !formData.password) {
+      setError('Please fill in all fields');
+      return;
+    }
 
-    if (!validation.isValid) {
-      setError(validation.errors[0]);
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setError('Please enter a valid email address');
       return;
     }
 
     try {
-      login(formData.email, formData.password, formData.remember);
+      setLoading(true);
+      await login(formData.email, formData.password);
       navigate('/');
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <section className="login-section">
       <div className="login-container">
-        <div className="login-box">
+        <div className="login-box" style={{ position: 'relative' }}>
+          <button 
+            className="login-close-btn"
+            onClick={() => navigate('/')}
+            title="Close and go back"
+            disabled={loading}
+            type="button"
+            style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              background: 'none',
+              border: 'none',
+              fontSize: '2.5rem',
+              cursor: loading ? 'not-allowed' : 'pointer',
+              color: loading ? '#ccc' : '#666',
+              padding: '0',
+              width: '2.5rem',
+              height: '2.5rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              opacity: loading ? 0.5 : 1
+            }}
+          >
+            ×
+          </button>
+          
           <div className="login-header">
             <img src="/images/sourced/logo.png" alt="Alacritas Logo" className="login-logo" />
             <h1>Welcome Back</h1>
@@ -87,6 +107,7 @@ const LoginPage = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
               <i className="bx bx-envelope"></i>
             </div>
@@ -100,45 +121,15 @@ const LoginPage = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                disabled={loading}
               />
               <i className="bx bx-lock"></i>
             </div>
 
-            <div className="form-options">
-              <label className="remember-me">
-                <input
-                  type="checkbox"
-                  id="remember"
-                  checked={formData.remember}
-                  onChange={handleChange}
-                />
-                Remember me
-              </label>
-              <a href="/" onClick={(e) => e.preventDefault()} className="forgot-password">
-                Forgot Password?
-              </a>
-            </div>
-
-            <button type="submit" className="login-btn">
-              Sign In
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? 'Signing In...' : 'Sign In'}
             </button>
           </form>
-
-          <div className="divider">
-            <span>Or continue with</span>
-          </div>
-
-          <div className="social-login">
-            <a href="/" onClick={(e) => e.preventDefault()} className="social-btn google">
-              <img src="/images/sourced/google.png" alt="Google" />
-            </a>
-            <a href="/" onClick={(e) => e.preventDefault()} className="social-btn facebook">
-              <img src="/images/sourced/facebook.png" alt="Facebook" />
-            </a>
-            <a href="/" onClick={(e) => e.preventDefault()} className="social-btn linkedin">
-              <img src="/images/sourced/linkedin.png" alt="LinkedIn" />
-            </a>
-          </div>
 
           <div className="signup-link">
             Don't have an account? <Link to="/">Sign Up</Link>

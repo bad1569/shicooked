@@ -1,23 +1,29 @@
-// Firebase Configuration
-// TODO: Replace with your actual Firebase project credentials
-// Get these from your Firebase Console: https://console.firebase.google.com/
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from "firebase/database";
+import { getAuth } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyC2KdojXKpe_jGot76EUgIm2OvDQDEFH-g",
+  authDomain: "alacritas-ai.firebaseapp.com",
+  databaseURL: "https://alacritas-ai-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "alacritas-ai",
+  storageBucket: "alacritas-ai.firebasestorage.app",
+  messagingSenderId: "608598039016",
+  appId: "1:608598039016:web:37d0badafbac47aa336c5d",
+  measurementId: "G-YKBJLJZ04N"
 };
 
-// Initialize Firebase (uncomment when you have real credentials)
-// import { initializeApp } from 'firebase/app';
-// import { getFirestore } from 'firebase/firestore';
-// import { getAuth } from 'firebase/auth';
-
-// const app = initializeApp(firebaseConfig);
-// export const db = getFirestore(app);
-// export const auth = getAuth(app);
-
-export { firebaseConfig };
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+export const db = getDatabase(app);
+export const auth = getAuth(app);
+export const storage = getStorage(app);

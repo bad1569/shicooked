@@ -3,7 +3,7 @@ import { useJobs } from '../context/JobsContext';
 import { useNavigate } from 'react-router-dom';
 
 const JobsPage = () => {
-  const { filteredJobs, searchJobs } = useJobs();
+  const { filteredJobs, searchJobs, loading } = useJobs();
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
@@ -13,10 +13,19 @@ const JobsPage = () => {
     searchJobs(value);
   };
 
-  const handleJobClick = (index) => {
-    localStorage.setItem('job', index);
-    navigate(`/job-details/${index}`);
+  const handleJobClick = (jobId) => {
+    localStorage.setItem('job', jobId);
+    navigate(`/job-details/${jobId}`);
   };
+
+  if (loading) {
+    return (
+      <section className="jobs extra-space sec-space obj-width">
+        <h2>Jobs in demand</h2>
+        <p>Loading jobs...</p>
+      </section>
+    );
+  }
 
   return (
     <section className="jobs extra-space sec-space obj-width">
@@ -35,18 +44,22 @@ const JobsPage = () => {
       </form>
 
       <div className="jobs-container" id="root">
-        {filteredJobs.map((job) => (
-          <div
-            key={job.index}
-            className="jList"
-            onClick={() => handleJobClick(job.index)}
-          >
-            <img src={job.image} alt={job.title} />
-            <h3>{job.title}</h3>
-            <p>{job.rate}</p>
-            <span className="job-type">{job.type}</span>
-          </div>
-        ))}
+        {filteredJobs.length > 0 ? (
+          filteredJobs.map((job) => (
+            <div
+              key={job.id}
+              className="jList"
+              onClick={() => handleJobClick(job.id)}
+            >
+              <img src={job.image} alt={job.title} />
+              <h3>{job.title}</h3>
+              <p>{job.rate}</p>
+              <span className="job-type">{job.type}</span>
+            </div>
+          ))
+        ) : (
+          <p>No jobs found.</p>
+        )}
       </div>
     </section>
   );

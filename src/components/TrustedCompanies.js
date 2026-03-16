@@ -5,7 +5,7 @@ const TrustedCompanies = () => {
   return (
     <section className="trust sec-space obj-width">
       <h2>Trusted by top companies</h2>
-      <p>Work with industry leaders and Fortune 500 companies.</p>
+    
 
       <div className="t-box">
         {trustedCompanies.map((company) => (

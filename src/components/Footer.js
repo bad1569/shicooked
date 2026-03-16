@@ -37,7 +37,7 @@ const Footer = () => {
           </div>
         </div>
         <h3>Alacritas</h3>
-        <p>123 Main Street, Anytown, USA</p>
+        <p>Unit 206, Tech Tower Manila<br />Makati, Metro Manila, Philippines</p>
         <p>Email: info@alacritas.com</p>
       </div>
     </footer>

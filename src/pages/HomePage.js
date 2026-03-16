@@ -5,14 +5,14 @@ import JobsListing from '../components/JobsListing';
 import Team from '../components/Team';
 import TrustedCompanies from '../components/TrustedCompanies';
 
-const HomePage = () => {
+const HomePage = ({ onJobRequestClick }) => {
   return (
     <div>
       <Hero />
       <Features />
       <JobsListing />
       <TrustedCompanies />
-      <Team />
+      <Team onJobRequestClick={onJobRequestClick} />
     </div>
   );
 };

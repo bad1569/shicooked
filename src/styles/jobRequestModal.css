@@ -1,0 +1,325 @@
+﻿/* Job Request Modal Styles */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+}
+
+.job-request-modal {
+  max-width: 700px;
+}
+
+.job-request-modal .modal-header {
+  background: linear-gradient(135deg, #07eea9 0%, #07eea9 100%);
+  padding: 2rem;
+  border-radius: 12px 12px 0 0;
+}
+
+.job-request-modal .modal-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.job-request-modal .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.job-request-modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.job-request-modal input[type="text"],
+.job-request-modal input[type="number"],
+.job-request-modal textarea,
+.job-request-modal select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.job-request-modal input[type="text"]:focus,
+.job-request-modal input[type="number"]:focus,
+.job-request-modal textarea:focus,
+.job-request-modal select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+}
+
+.job-request-modal input[type="text"]:disabled,
+.job-request-modal input[type="number"]:disabled,
+.job-request-modal textarea:disabled,
+.job-request-modal select:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.job-request-modal textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* Wage Estimate Box */
+.wage-estimate-box {
+  background: linear-gradient(135deg, #07eea905 0%, #07eea905 100%);
+  border: 2px solid #07eea9;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.wage-estimate-box h4 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.wage-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.wage-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wage-row span:first-child {
+  color: #666;
+  font-weight: 500;
+}
+
+.wage-row strong {
+  color: #333;
+  font-size: 1rem;
+}
+
+.wage-row.total {
+  border-top: 2px solid #667eea;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.wage-row.total strong {
+  font-size: 1.3rem;
+  color: #07eea9;
+}
+
+/* Image Upload */
+.image-upload-box {
+  border: 2px dashed #07eea9;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  background-color: #fff8f0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.image-upload-box:hover {
+  border-color: #07eea9;
+  background-color: #fff3e0;
+}
+
+.image-upload-box input[type="file"] {
+  display: none;
+}
+
+.image-upload-box p {
+  margin: 0;
+  color: #07eea9;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+/* Image Previews */
+.image-preview-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.image-preview {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  background-color: #f5f5f5;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: #F44336;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.remove-image-btn:hover:not(:disabled) {
+  background-color: #d32f2f;
+  transform: scale(1.1);
+}
+
+.remove-image-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #07eea9 0%, #07eea9 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(255, 107, 0, 0.4);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Error and Success Messages */
+.error-message,
+.success-message {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+}
+
+.success-message {
+  background-color: #e8f5e9;
+  color: #388e3c;
+  border: 1px solid #c8e6c9;
+}
+
+/* Modal Content Styling */
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .job-request-modal {
+    max-width: 95vw !important;
+  }
+
+  .image-preview-container {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .wage-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .wage-row strong {
+    margin-left: 0;
+  }
+}

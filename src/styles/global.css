@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css");
 
 * {
@@ -486,6 +486,73 @@ header {
   color: #07eea9;
   padding: 5px 10px;
   border-radius: 20px;
+}
+
+/* Job Request Section */
+.job-request-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.request-benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.benefit-card {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, rgba(255, 82, 0, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 107, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(255, 107, 0, 0.15);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #07eea9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.benefit-icon i {
+  font-size: 3rem;
+  color: #07eea9;
+}
+
+.benefit-card h3 {
+  color: #333;
+  margin: 1rem 0 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.benefit-card p {
+  color: #666;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.auth-prompt {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(255, 82, 0, 0.15) 100%);
+  border-radius: 12px;
+  border: 2px dashed rgba(255, 107, 0, 0.5);
+}
+
+.auth-prompt p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
 }
 
 /* Footer */
@@ -1353,7 +1420,7 @@ footer {
 /* ============ CONTACT PAGE ============ */
 
 .contact-section {
-  background: linear-gradient(135deg, #f8f9fa 0%, #white 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
   padding: 3rem 1rem;
   min-height: 100vh;
 }
